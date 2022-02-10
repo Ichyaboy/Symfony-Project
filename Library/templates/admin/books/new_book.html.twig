@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+     
+    {{ form_start(form_book)}}
+    <div class="container">
+        <h2 style="margin-top: 40px;">Add a new book</h2>
+    <div class="mb-3">
+        <label for="" class="form-label">Title</label>
+        {{ form_widget(form_book.title,{'attr':{'class' : 'form-control'}})}}
+      </div>
+      <div class=" mb-3">
+        <label for="" class="form-label">author</label>
+        {{ form_widget(form_book.author,{'attr':{'class' : 'form-control'}})}}
+      </div>
+      <div class=" mb-3">
+        <label for="" class="form-label">cover</label>
+        {{ form_widget(form_book.cover,{'attr':{'class' : 'form-control'}})}}
+      </div>
+      <div class=" mb-3">
+        <label for="" class="form-label">URL</label>
+        {{ form_widget(form_book.url,{'attr':{'class' : 'form-control'}})}}
+      </div>
+      <div class=" mb-3">
+        <label for="" class="form-label">Users</label>
+        {{ form_widget(form_book.users,{'attr':{'class' : 'form-control', 'multiple' : 'mutiple'}})}}
+      </div>
+      <div class=" mb-3">
+        <label for="" class="form-label">Category</label>
+        {{ form_widget(form_book.category,{'attr':{'class' : 'form-control', 'multiple' : 'mutiple'}})}}
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    {{ form_end(form_book)}}
+
+
+{% endblock  %}

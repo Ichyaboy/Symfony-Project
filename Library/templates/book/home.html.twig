@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyLibrary{% endblock %}
+
+{% block body %}
+<style>
+   body{
+        background-image:url('background/bookshelf.jpg');
+        background-size: cover;
+        
+        height:84.5vh;
+        z-index: -1;
+    }
+    #div1{
+        margin-top:150px;
+        width: 100%;
+        height:50%;
+        
+    }
+    aside{  
+        float:right;
+    }
+    h2{
+        color:white;
+    }
+    .bt{
+        width:170px;
+        height:55px;
+        background:none;
+      
+        color :white;
+        transition-duration:0.60s;
+    }
+    .bt:hover{
+        background-color:#1a1a1a;
+        color:white;
+    }
+</style>
+<section>
+    <center>
+        <div id="div1">
+           
+            <h2>Welcome to the galaxy of books  </h2>
+            <h2>browse, read, add...</h2>
+            <a href="{{path('books')}}" ><button class="bt"> Browse Books </button></a>
+            
+        </div>
+    </center>
+</section>
+
+{% endblock %}

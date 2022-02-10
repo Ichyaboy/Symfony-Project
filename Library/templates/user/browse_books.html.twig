@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row" style="display: flex;justify-content:center;">
+        {% for book in books %}
+
+        <div class="card col col-3" style="width:400px; margin:5px; ">
+            <img class="card-img-top" src="{{ asset('book.cover') }} "alt="Card image">
+            <div class="card-body">
+              <h4 class="card-title">{{book.title}}</h4>
+              <p class="card-text">{{book.author}}</p>
+              <a href="{{book.url}}" class="btn btn-primary" target="_blank">Read book</a>
+              {%  if app.user  %}
+              <a href="{{path('add_book_user',{'id':book.id , 'user_id': app.user.id })}}" class="btn btn-warning" >Add to list</a>
+                {% endif %}
+            </div>
+          </div> 
+          {%  endfor  %}
+    </div>
+
+{% endblock %}

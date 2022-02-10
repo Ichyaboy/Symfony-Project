@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+     
+    {{ form_start(form_user)}}
+    <div class="container">
+        <h2 style="margin-top: 40px;">Edit user's information</h2>
+    <div class="mb-3">
+        <label for="" class="form-label">Name</label>
+        {{ form_widget(form_user.name,{'attr':{'class' : 'form-control'}})}}
+      </div>
+      <div class=" mb-3">
+        <label for="" class="form-label">lastname</label>
+        {{ form_widget(form_user.lastname,{'attr':{'class' : 'form-control'}})}}
+      </div>
+      <div class=" mb-3">
+        <label for="" class="form-label">username</label>
+        {{ form_widget(form_user.username,{'attr':{'class' : 'form-control'}})}}
+      </div>
+      <div class=" mb-3">
+        <label for="" class="form-label">email</label>
+        {{ form_widget(form_user.email,{'attr':{'class' : 'form-control'}})}}
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class=" mb-3">
+        <label for="" class="form-label">password</label>
+        {{ form_widget(form_user.password,{'attr':{'class' : 'form-control'}})}}
+        <div id="emailHelp" class="form-text">We'll never share your password with anyone else.</div>
+      </div>
+      <div class="d-none">
+        <label for="" class="form-label">confirm password</label>
+        {{ form_widget(form_user.confirm_password,{required: false,'attr':{'class' : 'form-control'}})}}
+        <div id="emailHelp" class="form-text">We'll never share your password with anyone else.</div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    {{ form_end(form_user)}}
+
+
+{% endblock  %}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{{ path('home') }}"><img src="{{ asset('aze.png') }}" alt="logo" style="width:3rem; height:3rem; margin-left:20px;"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              
+              <li class="nav-item">
+                <a class="nav-link active" href="{{ path('home') }}">Library
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{path('books')}}">Browse Books</a>
+              </li>
+              
+              
+              
+              {% if not app.user %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ path('security_login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ path('security_registration') }}">Sign up</a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ path('security_logout') }}">Logout</a>
+                </li>
+              {% endif %}
+              
+
+
+            </ul>
+            {% if app.user and app.user.getIsAdmin() == 1 %}
+
+              <li class="nav-item dropdown" style="color: white;list-style:none;">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"style="color: white;" >Admin Panel</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{{ path('admin_users')}}">Users</a>
+                  <a class="dropdown-item" href="{{ path('admin_books')}}">Books</a>
+
+                </div>
+                </li>
+              {% endif %}
+            {% if app.user %}
+            
+              <li style="margin-right: 15px; color:white; " class="d-flex" >
+                {{ app.user.username }}
+              </li>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+      <div >
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        {% block body %}
+        {% endblock %}
+      </div>  
+      </body>
+</html>
